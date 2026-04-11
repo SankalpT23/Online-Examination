@@ -39,7 +39,7 @@ public class SecurityConfig {
                         .requestMatchers("/auth/**").permitAll()
 
                         // ── ADMIN only ───────────────────────────────────────
-                        .requestMatchers(HttpMethod.POST,   "/subjects").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST,   "/subjects").hasAnyRole("ADMIN", "FACULTY")
                         .requestMatchers(HttpMethod.PUT,    "/subjects/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE, "/subjects/**").hasRole("ADMIN")
                         .requestMatchers("/admin/**").hasRole("ADMIN")

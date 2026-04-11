@@ -11,6 +11,7 @@ import com.examination.OnlineExamination.model.Exam;
 import com.examination.OnlineExamination.model.ExamEnrollment;
 import com.examination.OnlineExamination.model.Student;
 import com.examination.OnlineExamination.repository.ExamEnrollmentRepository;
+import com.examination.OnlineExamination.repository.ExamRepository;
 import com.examination.OnlineExamination.repository.StudentRepository;
 import com.examination.OnlineExamination.security.UserPrincipal;
 import lombok.RequiredArgsConstructor;
@@ -27,14 +28,16 @@ public class EnrollmentService {
 
     private final ExamEnrollmentRepository enrollmentRepository;
     private final StudentRepository studentRepository;
-    private final ExamService examService;
+    private final ExamRepository examRepository;
 
     // ──────────────────────────────────────────────────────
     // ENROLL — Student enrolls in a published exam
     // ──────────────────────────────────────────────────────
     @Transactional
     public EnrollmentResponse enroll(EnrollmentRequest request, UserPrincipal principal) {
-        Exam exam = examService.findExamById(request.getExamId());
+        Exam exam = examRepository.findById(request.getExamId())
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "Exam not found with id: " + request.getExamId()));
 
         // Exam must be PUBLISHED
         if (exam.getStatus() != ExamStatus.PUBLISHED) {
@@ -107,7 +110,9 @@ public class EnrollmentService {
     // GET BY EXAM — Faculty / Admin sees all enrolled students
     // ──────────────────────────────────────────────────────
     public List<EnrollmentResponse> getEnrollmentsByExam(Long examId) {
-        examService.findExamById(examId); // verify exam exists
+        examRepository.findById(examId)
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "Exam not found with id: " + examId)); // verify exam exists
         return enrollmentRepository.findByExam_ExamId(examId)
                 .stream()
                 .map(this::mapToResponse)
