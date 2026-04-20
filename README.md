@@ -1,73 +1,165 @@
-# Online Examination System
-
 <div align="center">
-  A full-stack, secure, and responsive web application designed for conducting online assessments and managing examinations seamlessly.
+
+<br/>
+
+# 📝 Online Examination System
+
+**A modern, secure, and blazing-fast platform to conduct online assessments — built for educators, loved by students.**
+
+<br/>
+
+[![Java](https://img.shields.io/badge/Java-21-ED8B00?style=flat-square&logo=openjdk&logoColor=white)](https://openjdk.org/projects/jdk/21/)
+[![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.5-6DB33F?style=flat-square&logo=springboot&logoColor=white)](https://spring.io/projects/spring-boot)
+[![React](https://img.shields.io/badge/React-18-61DAFB?style=flat-square&logo=react&logoColor=black)](https://reactjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![MySQL](https://img.shields.io/badge/MySQL-8-4479A1?style=flat-square&logo=mysql&logoColor=white)](https://www.mysql.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](./LICENSE)
+
+<br/>
+
 </div>
 
 ---
 
-## 📖 Overview
+## ✨ What is this?
 
-The **Online Examination System** provides a comprehensive platform for administrators to manage exams, subjects, and questions, while empowering students to enroll, attempt time-bound exams, and view their performance instantly. 
+**Online Examination System** is a full-stack web app that makes running exams effortless. Admins can create and manage exams in minutes. Students get a clean, distraction-free interface to attempt them — with a live timer, instant results, and their full history at a glance.
 
-Designed with modern web practices, this application ensures a responsive, user-friendly experience on the frontend along with a secure, highly-scalable backend architecture.
+No paper. No manual grading. Just exams that work.
 
-## 🚀 Tech Stack
+---
+
+## 🚀 Features
+
+| For Admins | For Students |
+|---|---|
+| ✅ Create & manage exams, subjects, and questions | ✅ Browse and enroll in available exams |
+| ✅ Full lifecycle control (draft → publish) | ✅ Timed, distraction-free exam environment |
+| ✅ View all student results and analytics | ✅ Auto-graded results the moment you submit |
+| ✅ Role-based access control | ✅ Full personal attempt history |
+
+**Under the hood:** secure JWT authentication, automated email notifications, real-time progress tracking, and automatic submission when time runs out.
+
+---
+
+## 🛠️ Tech Stack
 
 ### Backend
-- **Java 21** & **Spring Boot 3.5**
-- **Spring Security & JWT** - Secure authentication & authorization
-- **Spring Data JPA & MySQL** - Robust data persistence
-- **Spring Mail** - Automated email handling
-- **Lombok** - Boilerplate code reduction
+- **Java 21** + **Spring Boot 3.5**
+- **Spring Security** + **JWT** — stateless, role-based auth
+- **Spring Data JPA** + **MySQL** — rock-solid persistence
+- **Spring Mail** — automated email handling
+- **Lombok** — clean, concise code
 
 ### Frontend
-- **React 18** & **TypeScript** powered by **Vite**
-- **Tailwind CSS**, **Radix UI**, & **class-variance-authority** - Beautiful, dynamic, and accessible UI components
-- **React Router DOM** - Client-side routing
-- **TanStack React Query** & **Axios** - Efficient server state management and asynchronous API calls
-- **Lucide React** - Modern iconography
+- **React 18** + **TypeScript** — type-safe UI
+- **Vite** — lightning-fast dev server & builds
+- **Tailwind CSS** + **Radix UI** — beautiful, accessible components
+- **TanStack Query** + **Axios** — smart server-state management
+- **React Router DOM** — seamless client-side navigation
 
-## ✨ Key Features
+---
 
-- **Authentication & Authorization:** Secure, role-based JWT authentication separating Admins from Students.
-- **Admin Capabilities:** Complete lifecycle management for exams, questions, and subjects.
-- **Student Dashboard:** Intuitive portal for students to discover, enroll in, and attempt available exams.
-- **Live Exam Environment:** Seamless test-taking experience with progress management and automatic secure submission.
-- **Results & Analytics:** Instant grading and transparent result tracking for specific exam attempts.
-
-## 🛠️ Getting Started
-
-Follow the steps below to set up the project locally.
+## ⚡ Getting Started
 
 ### Prerequisites
-- **Java 21** or higher
-- **Node.js** (v18+) and **npm**
-- **MySQL** instance running locally
 
-### 1. Backend Setup
-1. Clone the repository and navigate to the project root.
-2. Update the database configurations (URL, username, password) inside `src/main/resources/application.properties` or `application.yml`.
-3. Start the Spring Boot application using Maven Wrapper:
-   ```bash
-   ./mvnw spring-boot:run
-   ```
-   *The backend server will typically start on `http://localhost:8080`.*
+Make sure you have these installed:
 
-### 2. Frontend Setup
-1. Navigate to the frontend workspace:
-   ```bash
-   cd "Online-Exam Frontend"
-   ```
-2. Install the necessary Node dependencies:
-   ```bash
-   npm install
-   ```
-3. Spin up the Vite development server:
-   ```bash
-   npm run dev
-   ```
-   *The frontend application will be accessible at `http://localhost:5173`.*
+- **Java 21+**
+- **Node.js v18+** and **npm**
+- A running **MySQL** instance
 
-## 📜 License
-This project is open-source and available under the relevant license detailed in the `LICENSE` file.
+---
+
+### 1️⃣ Clone the repo
+
+```bash
+git clone https://github.com/SankalpT23/Online-Examination.git
+cd Online-Examination
+```
+
+### 2️⃣ Configure the database
+
+Open `src/main/resources/application.properties` and update:
+
+```properties
+spring.datasource.url=jdbc:mysql://localhost:3306/your_db_name
+spring.datasource.username=your_username
+spring.datasource.password=your_password
+```
+
+### 3️⃣ Start the backend
+
+```bash
+./mvnw spring-boot:run
+```
+
+> Backend runs at → `http://localhost:8080`
+
+### 4️⃣ Start the frontend
+
+```bash
+cd "Online-Exam Frontend"
+npm install
+npm run dev
+```
+
+> Frontend runs at → `http://localhost:5173`
+
+That's it. You're live. 🎉
+
+---
+
+## 🗂️ Project Structure
+
+```
+Online-Examination/
+├── src/                        # Spring Boot backend
+│   └── main/
+│       ├── java/               # Controllers, services, entities
+│       └── resources/          # application.properties
+├── Online-Exam Frontend/       # React + TypeScript frontend
+│   ├── src/
+│   │   ├── components/         # UI components
+│   │   ├── pages/              # Route pages
+│   │   └── api/                # Axios API calls
+│   └── package.json
+└── pom.xml                     # Maven build config
+```
+
+---
+
+## 🔐 Authentication Flow
+
+```
+User Login → JWT issued → Stored on client
+         → Every API request carries Bearer token
+         → Spring Security validates role (ADMIN / STUDENT)
+         → Access granted or denied accordingly
+```
+
+---
+
+## 🤝 Contributing
+
+Contributions are warmly welcome! Here's how:
+
+1. Fork the repo
+2. Create a branch: `git checkout -b feature/your-feature`
+3. Commit your changes: `git commit -m 'Add your feature'`
+4. Push and open a Pull Request
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License** — see the [LICENSE](./LICENSE) file for details.
+
+---
+
+<div align="center">
+
+⭐ **If you find this useful, drop a star — it means a lot!** ⭐
+
+</div>
